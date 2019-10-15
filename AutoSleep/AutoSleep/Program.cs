@@ -55,6 +55,17 @@ namespace AutoSleep
         [STAThread]
         static void Main()
         {
+            MessageBox.Show("AutoSleep starting..."); // Dialog to show that program is running
+            while (true) // infinite loop to ensure progrma is running despite wakingup from sleep
+            {
+                if (IdleTimeFinder.GetIdleTime() > 600000) // Check if 15 minutes have passed
+                {
+                    Application.SetSuspendState(PowerState.Hibernate, true, true); // Sleep
+                    MessageBox.Show("AutoSleep starting..."); // Dialog to show that program is running
+                }
+                Thread.Sleep(1000); // (Power optimization) Makes the program wait 1 second before refreshing, prevents overconsumption of CPU power
+                //takes about 20% of CPU if constantly checking for idle time (while loop) 
+            }
         }
     }
 }
