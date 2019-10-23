@@ -1,0 +1,11 @@
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\obj\Debug\netcoreapp3.0\DetectLastInteraction.AssemblyInfoInputs.cache
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\obj\Debug\netcoreapp3.0\DetectLastInteraction.AssemblyInfo.cs
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\bin\Debug\netcoreapp3.0\DetectLastInteraction.exe
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\bin\Debug\netcoreapp3.0\DetectLastInteraction.deps.json
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\bin\Debug\netcoreapp3.0\DetectLastInteraction.runtimeconfig.json
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\bin\Debug\netcoreapp3.0\DetectLastInteraction.runtimeconfig.dev.json
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\bin\Debug\netcoreapp3.0\DetectLastInteraction.dll
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\bin\Debug\netcoreapp3.0\DetectLastInteraction.pdb
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\obj\Debug\netcoreapp3.0\DetectLastInteraction.dll
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\obj\Debug\netcoreapp3.0\DetectLastInteraction.pdb
+C:\Users\Tze Zhao\Desktop\DetectLastInteraction\DetectLastInteraction\obj\Debug\netcoreapp3.0\DetectLastInteraction.csprojAssemblyReference.cache
