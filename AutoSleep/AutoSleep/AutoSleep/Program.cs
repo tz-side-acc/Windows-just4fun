@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Media;
 
 internal struct LASTINPUTINFO
 {
@@ -85,14 +86,43 @@ namespace AutoSleep
         [STAThread]
         static void Main()
         {
-            AutoClosingMessageBox.Show("AutoSleep starting", "AutoSleep.exe", 10000);
-            // MessageBox.Show("AutoSleep starting..."); // Dialog to show that program is running
-            while (true) // infinite loop to ensure progrma is running despite wakingup from sleep
+            // Initialize variabales
+            int sleepTime = 600000; // 10 minutes
+            bool displayed = false; // for warning/alert message
+            long LastInputTime = IdleTimeFinder.GetLastInputTime();
+            DateTime StartupTime = DateTime.Now; // Else would be undefined
+
+            SoundPlayer alertSound = new SoundPlayer(@"C:\Users\Tze Zhao\Desktop\C#\AutoSleep\Google_event_notification_tone.wav"); //Initiate Sound player
+            AutoClosingMessageBox.Show("AutoSleep starting", "AutoSleep.exe", 5000); // Dialog to show that program is running
+
+            while (true) // infinite loop to ensure program is running despite waking up from sleep
             {
-                if (IdleTimeFinder.GetIdleTime() > 600000) // Check if 15 minutes have passed
+
+                // To display warning message
+                if (IdleTimeFinder.GetIdleTime() > sleepTime-60000) // Check if there is one minute left before shutdown
+                {
+                    if (displayed)
+                    {
+                        if (IdleTimeFinder.GetLastInputTime() != LastInputTime) // means that user has interacted with device
+                        {
+                            LastInputTime = IdleTimeFinder.GetLastInputTime(); // update last interacted time
+                            displayed = false; // computer to display again the next time device is going to sleep
+                        }
+                    }
+                    else
+                    {
+                        alertSound.Play(); // play alert sound
+                        AutoClosingMessageBox.Show("Going to sleep in 1 min", "AutoSleep.exe", 30000); // alert user that computer is going to sleep
+                        displayed = true; // computer has displayed
+                    }
+                }
+
+                // To put PC to sleep
+                if (IdleTimeFinder.GetIdleTime() > sleepTime && (StartupTime.AddMinutes(sleepTime / 60000) > DateTime.Now)) // Check if 10 minutes have passed since last user interaction and waking up from sleep
                 {
                     Application.SetSuspendState(PowerState.Hibernate, true, true); // Sleep
-                    AutoClosingMessageBox.Show("AutoSleep starting", "AutoSleep.exe", 5000); // Dialog to show that program is running
+                    AutoClosingMessageBox.Show("AutoSleep starting", "AutoSleep.exe", 5000); // Dialog to show that program is running after waking up
+                    StartupTime = DateTime.Now;
                 }
                 Thread.Sleep(1000); // (Power optimization) Makes the program wait 1 second before refreshing, prevents overconsumption of CPU power
                 //takes about 20% of CPU if constantly checking for idle time (while loop) 
